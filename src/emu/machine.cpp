@@ -1452,5 +1452,13 @@ void running_machine::emscripten_save(const char *name) {
 void running_machine::emscripten_load(const char *name) {
 	emscripten_running_machine->schedule_load(name);
 }
+void running_machine::emscripten_load_image(const char* device, const char* filename) {
+	for (device_image_interface& image : image_interface_iterator(emscripten_running_machine->root_device()))
+	{
+		if (image.canonical_instance_name() == device) {
+			image.load(filename);
+		}
+	}
+}
 
 #endif /* defined(__EMSCRIPTEN__) */

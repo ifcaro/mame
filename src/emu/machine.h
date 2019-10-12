@@ -412,6 +412,7 @@ public:
 	static void emscripten_soft_reset();
 	static void emscripten_save(const char *name);
 	static void emscripten_load(const char *name);
+	static void emscripten_load_image(const char* device, const char* filename);
 #endif
 };
 
